@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app
+  namespace: react-app
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: react-app
+
+  template:
+    metadata:
+      labels:
+        app: react-app
+
+    spec:
+      containers:
+        - name: react-app
+          image: 776137447869.dkr.ecr.ap-south-1.amazonaws.com/react-app:1.0
+
+          ports:
+            - containerPort: 80
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+            limits:
+              cpu: 500m
+              memory: 512Mi
