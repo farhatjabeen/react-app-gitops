@@ -1,0 +1,23 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: react-eks
+  region: ap-south-1
+  version: "1.34"
+
+managedNodeGroups:
+  - name: react-workers
+    instanceType: t3.small
+    desiredCapacity: 2
+    minSize: 1
+    maxSize: 2
+
+    volumeSize: 20
+    volumeType: gp3
+
+    labels:
+      role: worker
+
+    tags:
+      Name: react-eks-worker
